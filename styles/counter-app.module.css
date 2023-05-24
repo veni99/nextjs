@@ -1,0 +1,11 @@
+.flexContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.flexContainer > div {
+  margin: 2px;
+  padding: 3px;
+}
