@@ -27,7 +27,7 @@ export default function Home() {
         </Button>
         &ensp;
         <Button type="primary" shape="round">
-          <Link href="/asc-barang"> 5 </Link>
+          <Link href="/sort-barang"> 5 </Link>
         </Button>
         &ensp;
         <Button type="primary" shape="round">
