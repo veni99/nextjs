@@ -75,7 +75,7 @@ export default function Barang() {
           <Link href="/"> Back </Link>
         </Button>
 
-        {searchInput.length > 1 ? <p>CATEGORY : {searchInput}</p> : <p>ALL</p>}
+        {searchInput.length > 1 ? <p>SEARCH : {searchInput}</p> : <p>ALL</p>}
 
         {searchInput.length > 1
           ? filteredResults.map((item, i) => {
