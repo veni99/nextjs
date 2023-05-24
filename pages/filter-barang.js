@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../styles/Home.module.css';
-import { Input, Button } from 'antd';
+import { Button } from 'antd';
 import Link from 'next/link';
-import { SearchOutlined, RollbackOutlined } from '@ant-design/icons';
+import { RollbackOutlined } from '@ant-design/icons';
 
 export default function Barang() {
   const items = [
@@ -43,63 +43,28 @@ export default function Barang() {
     },
   ];
 
-  //useState
-  const [filteredResults, setFilteredResults] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
-
-  //handle search value
-  const searchItems = (searchValue) => {
-    setSearchInput(searchValue);
-    if (searchInput !== '') {
-      const filteredData = items.filter((data) => {
-        return Object.values(data)
-          .join('')
-          .toLowerCase()
-          .includes(searchInput.toLowerCase());
-      });
-      setFilteredResults(filteredData);
-    } else {
-      setFilteredResults(items);
-    }
-  };
+  const filteredItems = items.filter((item) => item.category === 'ATK');
 
   return (
     <div className={styles.mainPage}>
       <div>
-        <Input
-          icon={<SearchOutlined />}
-          placeholder="Filter"
-          onChange={(e) => searchItems(e.target.value)}
-        />
         <Button type="primary" shape="round" icon={<RollbackOutlined />}>
           <Link href="/"> Back </Link>
         </Button>
-
-        {searchInput.length > 1 ? <p>CATEGORY : {searchInput}</p> : <p>ALL</p>}
-
-        {searchInput.length > 1
-          ? filteredResults.map((item, i) => {
-              return (
-                <ul>
-                  <li key={i}>
-                    {item.name} <br />
-                    {item.category} <br />
-                    {item.value}
-                  </li>
-                </ul>
-              );
-            })
-          : items.map((item, i) => {
-              return (
-                <ul>
-                  <li key={i}>
-                    {item.name} <br />
-                    {item.category} <br />
-                    {item.value}
-                  </li>
-                </ul>
-              );
-            })}
+        <br />
+        <br />
+        <strong>CATEGORY : ATK </strong>
+        {filteredItems.map((item, i) => (
+          <div key={i} style={{ marginTop: '20px' }}>
+            <ul>
+              <li key={i}>
+                {item.name} <br />
+                {item.category} <br />
+                {item.value}
+              </li>
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   );
